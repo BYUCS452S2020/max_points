@@ -1,1 +1,1 @@
-The [project pitch] (MaxPoints.pdf)
+The [project pitch](MaxPoints.pdf)
