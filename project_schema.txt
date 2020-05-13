@@ -1,0 +1,32 @@
+Max_Points Project Schema:
+
+- User (userID, fname, lname, username, password)
+- Card_Ownership (userID, cardID)
+	- Composite Primary Key is userID and cardID
+	- Foreign Key cardID references Card
+- Card (cardID, name)
+- Category (cardID, value, multiplier)
+	- Composite Primary Key is cardID and value
+	- Foreign Key cardID references Card
+
+The User table is for the users. The Card_Ownsership table links which users have which cards.
+The Card table is for the cards. The Category table links which cards have which benefits and
+their respective multipliers.
+
+The User table represents a user of the app. The Card_Ownership table represents every card 
+that every user possesses. The Card table represents every card that a user can own and query.
+The Category table represents every benefit category along with the multiplier.
+
+One user to many card ownerships.
+One card ownership to one card.
+One card to many categories.
+
+Much effort was taken to normalize the data. FNF can be seen throughout the tables.
+All the columns are atomic. We first started with two tables, and then we broke up the data
+into four tables.
+
+The User table columns are self-explanatory. 
+The Card_Ownership table columns is also self-explanatory.
+The Card table value column is the actual name of each credit card like Chase Freedom or Wells Fargo Propel.
+The Category table value column is the actual category name like Gas or Dining. The multiplier column is
+the number for the specific card's category reward amount like 2% or 4%.
