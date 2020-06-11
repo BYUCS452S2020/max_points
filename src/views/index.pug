@@ -1,0 +1,20 @@
+html
+  head
+    title=title
+  body
+    h1=app_name
+    if error
+        h2=error
+    form(method='POST')
+        p
+            | username: 
+            input(type='text', name='username', value='')
+            | password: 
+            input(type='text', name='password', value='')
+        p
+            | First Name: 
+            input(type='text', name='fname', value='')
+            | Last Name: 
+            input(type='text', name='lname', value='')
+        input(type='submit', formaction='login', value='Login')
+        input(type='submit', formaction='register', value='Register')

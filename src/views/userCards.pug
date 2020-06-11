@@ -1,0 +1,46 @@
+html
+  head
+    title=title
+  body
+    h1=app_name
+    h1=fname + "'s Credit Cards"
+    if error
+        h2=error
+    div
+        form(action='/searchcategory' method="POST")
+            p
+                | Category:
+                if searchcategory
+                    input.search(type='text', name='category_name', placeholder=searchcategory)
+                else
+                    input.search(type='text', name='category_name', placeholder='Enter a category...')
+                input(type='submit', value='Search')
+                input(type='hidden', name='username', value=username)
+                input(type='hidden', name='fname', value=fname)
+    ul
+        for creditCard, key in creditCards
+            ul
+                li=key
+                ul
+                    for category in creditCard['categories']
+                        li=category['name'] + ' - ' + category['multiplier'] + 'X'
+    div
+        form(action='/addcard' method="POST")
+            label(for='cards') Add a Credit Card 
+            select(name='cardname', id='')
+                each skill in ['ABOC Platinum Rewards Mastercard', 'American Airlines AAdvantage MileUp Card', 'American Express Gold Card', 'American Express Green Card', 'Bank of America Premium Rewards Credit Card', 'Bank of America Travel Rewards Credit Card', 'British Airways Visa Signature Card', 'Chase Sapphire Preferred Card', 'Chase Sapphire Reserve', 'Citi AAdvantage Executive World Elite Mastercard', 'Citi Premier Card', 'Citi Prestige Credit Card', 'Citi Rewards Card', 'Citi Rewards Student Card', 'Delta SkyMiles Blue American Express Card', 'Discover it Miles', 'Expedia Rewards Voyager Card from Citi', 'Hilton Honors American Express Card', 'Hilton Honors American Express Surpass Card', 'IHG Rewards Club Premier Credit Card', 'Ink Business Preferred Credit Card', 'Marriott Bonvoy Bold Credit Card', 'Marriott Bonvoy Boundless Credit Card', 'PenFed Platinum Rewards Visa Signature Card', 'Southwest Rapid Rewards Performance Buiness Credit Card', 'Southwest Rapid Rewards Plus Credit Card', 'Southwest Rapid Rewards Premier Credit Card', 'Southwest Rapid Rewards Priority Credit Card', 'The Platinum Card', 'U.S. Bank Altitude Reserve Visa Infinite Card', 'U.S. Bank FlexPerks Gold American Express Card', 'United Club Infinite Card', 'Wells Fargo Propel American Express Card', 'Wells Fargo Rewards Card', 'Wells Fargo Visa Signature Card']
+        
+                    option=skill
+                input(type='hidden', name='username', value=username)
+                input(type='hidden', name='fname', value=fname)
+            input(type='submit', value='Add')
+            
+    div
+        form(action='/removecard' method="POST")
+            label(for='cards') Remove a Credit Card 
+            select(name='cardname', id='')
+                each skill in ['ABOC Platinum Rewards Mastercard', 'American Airlines AAdvantage MileUp Card', 'American Express Gold Card', 'American Express Green Card', 'Bank of America Premium Rewards Credit Card', 'Bank of America Travel Rewards Credit Card', 'British Airways Visa Signature Card', 'Chase Sapphire Preferred Card', 'Chase Sapphire Reserve', 'Citi AAdvantage Executive World Elite Mastercard', 'Citi Premier Card', 'Citi Prestige Credit Card', 'Citi Rewards Card', 'Citi Rewards Student Card', 'Delta SkyMiles Blue American Express Card', 'Discover it Miles', 'Expedia Rewards Voyager Card from Citi', 'Hilton Honors American Express Card', 'Hilton Honors American Express Surpass Card', 'IHG Rewards Club Premier Credit Card', 'Ink Business Preferred Credit Card', 'Marriott Bonvoy Bold Credit Card', 'Marriott Bonvoy Boundless Credit Card', 'PenFed Platinum Rewards Visa Signature Card', 'Southwest Rapid Rewards Performance Buiness Credit Card', 'Southwest Rapid Rewards Plus Credit Card', 'Southwest Rapid Rewards Premier Credit Card', 'Southwest Rapid Rewards Priority Credit Card', 'The Platinum Card', 'U.S. Bank Altitude Reserve Visa Infinite Card', 'U.S. Bank FlexPerks Gold American Express Card', 'United Club Infinite Card', 'Wells Fargo Propel American Express Card', 'Wells Fargo Rewards Card', 'Wells Fargo Visa Signature Card']
+                    option=skill
+                input(type='hidden', name='username', value=username)
+                input(type='hidden', name='fname', value=fname)
+            input(type='submit', value='Remove')

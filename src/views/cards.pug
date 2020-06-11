@@ -1,0 +1,13 @@
+html
+  head
+    title=title
+  body
+    h1=app_name
+    h2='Credit Cards'
+    ul
+        for creditCard in creditCards
+            ul
+                li=creditCard['name']
+                ul
+                    for category in creditCard['categories']
+                        li=category['name'] + ' - ' + category['multiplier'] + 'X'
